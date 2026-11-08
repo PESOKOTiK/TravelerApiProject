@@ -1,0 +1,85 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TravelerAPI - Collaborative Travel Planning",
+    "version": "1.1.0",
+    "description": "REST API with PostgreSQL optimistic & pessimistic concurrency control for Lab 1 DDS."
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health check endpoint",
+        "responses": {
+          "200": { "description": "Healthy" },
+          "503": { "description": "Service Unavailable" }
+        }
+      }
+    },
+    "/api/travel-plans": {
+      "get": {
+        "summary": "List all travel plans",
+        "responses": { "200": { "description": "Success" } }
+      },
+      "post": {
+        "summary": "Create a new travel plan",
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Validation Error" }
+        }
+      }
+    },
+    "/api/travel-plans/{id}": {
+      "get": {
+        "summary": "Get travel plan with ordered locations",
+        "responses": {
+          "200": { "description": "Success" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "put": {
+        "summary": "Update travel plan with optimistic locking (version check)",
+        "responses": {
+          "200": { "description": "Updated" },
+          "400": { "description": "Validation Error" },
+          "404": { "description": "Not Found" },
+          "409": { "description": "Version Conflict" }
+        }
+      },
+      "delete": {
+        "summary": "Cascade delete travel plan and its locations",
+        "responses": {
+          "204": { "description": "No Content" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/api/travel-plans/{id}/locations": {
+      "post": {
+        "summary": "Add location with automatic sequential visit_order",
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Validation Error" },
+          "404": { "description": "Plan Not Found" }
+        }
+      }
+    },
+    "/api/locations/{id}": {
+      "put": {
+        "summary": "Update location with optimistic locking (version check)",
+        "responses": {
+          "200": { "description": "Updated" },
+          "400": { "description": "Validation Error" },
+          "404": { "description": "Not Found" },
+          "409": { "description": "Version Conflict" }
+        }
+      },
+      "delete": {
+        "summary": "Delete location and compact remaining visit_order",
+        "responses": {
+          "204": { "description": "No Content" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    }
+  }
+}
