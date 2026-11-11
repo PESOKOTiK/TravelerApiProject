@@ -1,0 +1,217 @@
+{
+    "root_group": {
+        "checks": {
+            "health check status is 200": {
+                "name": "health check status is 200",
+                "path": "::health check status is 200",
+                "id": "d89ad1db9736d06506c2c682124fe48f",
+                "passes": 167997,
+                "fails": 0
+            },
+            "plan created successfully (201)": {
+                "id": "37df647b876e6ee8417d86dcc1cda9a2",
+                "passes": 167997,
+                "fails": 0,
+                "name": "plan created successfully (201)",
+                "path": "::plan created successfully (201)"
+            },
+            "plan has valid UUID": {
+                "fails": 0,
+                "name": "plan has valid UUID",
+                "path": "::plan has valid UUID",
+                "id": "f5060b2b3d1e1fd675333565f1b4e5bc",
+                "passes": 167997
+            },
+            "plan initial version is 1": {
+                "name": "plan initial version is 1",
+                "path": "::plan initial version is 1",
+                "id": "837717209c851d0cf5e57c849e754b44",
+                "passes": 167997,
+                "fails": 0
+            },
+            "location added successfully (201)": {
+                "fails": 0,
+                "name": "location added successfully (201)",
+                "path": "::location added successfully (201)",
+                "id": "43e5206f58a4f8101552fce836930ccf",
+                "passes": 335994
+            },
+            "location has visit_order >= 1": {
+                "name": "location has visit_order >= 1",
+                "path": "::location has visit_order >= 1",
+                "id": "70a6d78e3857b9822163b9116c1bb013",
+                "passes": 335994,
+                "fails": 0
+            },
+            "location initial version is 1": {
+                "name": "location initial version is 1",
+                "path": "::location initial version is 1",
+                "id": "56a2e0508c2ae83c402cc2abb5c7d724",
+                "passes": 335994,
+                "fails": 0
+            },
+            "location updated (200) or optimistic lock conflict (409)": {
+                "fails": 0,
+                "name": "location updated (200) or optimistic lock conflict (409)",
+                "path": "::location updated (200) or optimistic lock conflict (409)",
+                "id": "5bcc86e6002ff75029bd2da9d7866b02",
+                "passes": 167997
+            },
+            "location version incremented on 200": {
+                "path": "::location version incremented on 200",
+                "id": "dfe95af81ffedfc12a0dc02b5a409f3c",
+                "passes": 167997,
+                "fails": 0,
+                "name": "location version incremented on 200"
+            },
+            "plan fetched successfully (200)": {
+                "id": "08f7178303431dc614477311a8b2cdac",
+                "passes": 167997,
+                "fails": 0,
+                "name": "plan fetched successfully (200)",
+                "path": "::plan fetched successfully (200)"
+            },
+            "plan updated (200) or optimistic lock conflict (409)": {
+                "name": "plan updated (200) or optimistic lock conflict (409)",
+                "path": "::plan updated (200) or optimistic lock conflict (409)",
+                "id": "a00345c680df4b6ceb346e037cd7d203",
+                "passes": 167997,
+                "fails": 0
+            },
+            "plan version incremented on 200": {
+                "passes": 167997,
+                "fails": 0,
+                "name": "plan version incremented on 200",
+                "path": "::plan version incremented on 200",
+                "id": "bbbce280cc47d1345e25ac90d0511e76"
+            },
+            "plan deleted successfully (204)": {
+                "name": "plan deleted successfully (204)",
+                "path": "::plan deleted successfully (204)",
+                "id": "66774067c95332b627f546baa4ed112b",
+                "passes": 167997,
+                "fails": 0
+            }
+        },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {}
+    },
+    "metrics": {
+        "http_reqs": {
+            "count": 1343976,
+            "rate": 1119.9613795053049
+        },
+        "http_req_duration{expected_response:true}": {
+            "med": 3.5994925,
+            "max": 52.795592,
+            "p(90)": 8.4481295,
+            "p(95)": 10.25245275,
+            "avg": 4.419007201662841,
+            "min": 0.488047
+        },
+        "http_req_waiting": {
+            "p(90)": 8.397965,
+            "p(95)": 10.200635,
+            "avg": 4.377276623732269,
+            "min": 0.459988,
+            "med": 3.55966,
+            "max": 52.763047
+        },
+        "http_req_duration": {
+            "p(90)": 8.4481295,
+            "p(95)": 10.25245275,
+            "avg": 4.419007201662841,
+            "min": 0.488047,
+            "med": 3.5994925,
+            "max": 52.795592,
+            "thresholds": {
+                "p(95)<200": false
+            }
+        },
+        "http_req_receiving": {
+            "p(95)": 0.051784,
+            "avg": 0.03200935545203237,
+            "min": 0.003602,
+            "med": 0.026118,
+            "max": 6.825619,
+            "p(90)": 0.042713
+        },
+        "vus": {
+            "value": 1,
+            "min": 1,
+            "max": 100
+        },
+        "checks": {
+            "passes": 2687952,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 1343976,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "iteration_duration": {
+            "max": 642.866626,
+            "p(90)": 559.3499764,
+            "p(95)": 564.299569,
+            "avg": 536.7552271624212,
+            "min": 517.267576,
+            "med": 530.266851
+        },
+        "vus_max": {
+            "value": 100,
+            "min": 100,
+            "max": 100
+        },
+        "http_req_sending": {
+            "avg": 0.009721222478675025,
+            "min": 0.00262,
+            "med": 0.008387,
+            "max": 6.921246,
+            "p(90)": 0.012609,
+            "p(95)": 0.01462425
+        },
+        "iterations": {
+            "count": 167997,
+            "rate": 139.9951724381631
+        },
+        "http_req_connecting": {
+            "max": 3.477231,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.000010057868592891541,
+            "min": 0,
+            "med": 0
+        },
+        "http_req_tls_handshaking": {
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0
+        },
+        "data_sent": {
+            "count": 408415845,
+            "rate": 340340.87898744084
+        },
+        "data_received": {
+            "count": 930819301,
+            "rate": 775669.8545346968
+        },
+        "http_req_blocked": {
+            "min": 0.000756,
+            "med": 0.002309,
+            "max": 3.523082,
+            "p(90)": 0.003618,
+            "p(95)": 0.004192,
+            "avg": 0.002706882164562398
+        }
+    }
+}
