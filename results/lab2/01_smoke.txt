@@ -1,0 +1,97 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: ./tests/performance-tests/smoke-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 5 max VUs, 40s max duration (incl. graceful stop):
+              * default: 5 looping VUs for 10s (gracefulStop: 30s)
+
+
+running (01.0s), 5/5 VUs, 0 complete and 0 interrupted iterations
+default   [  10% ] 5 VUs  01.0s/10s
+
+running (02.0s), 5/5 VUs, 10 complete and 0 interrupted iterations
+default   [  20% ] 5 VUs  02.0s/10s
+
+running (03.0s), 5/5 VUs, 20 complete and 0 interrupted iterations
+default   [  30% ] 5 VUs  03.0s/10s
+
+running (04.0s), 5/5 VUs, 30 complete and 0 interrupted iterations
+default   [  40% ] 5 VUs  04.0s/10s
+
+running (05.0s), 5/5 VUs, 35 complete and 0 interrupted iterations
+default   [  50% ] 5 VUs  05.0s/10s
+
+running (06.0s), 5/5 VUs, 45 complete and 0 interrupted iterations
+default   [  60% ] 5 VUs  06.0s/10s
+
+running (07.0s), 5/5 VUs, 55 complete and 0 interrupted iterations
+default   [  70% ] 5 VUs  07.0s/10s
+
+running (08.0s), 5/5 VUs, 65 complete and 0 interrupted iterations
+default   [  80% ] 5 VUs  08.0s/10s
+
+running (09.0s), 5/5 VUs, 75 complete and 0 interrupted iterations
+default   [  90% ] 5 VUs  09.0s/10s
+
+running (10.0s), 5/5 VUs, 85 complete and 0 interrupted iterations
+default   [ 100% ] 5 VUs  10.0s/10s
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✓ 'p(95)<200' p(95)=11.82ms
+
+    http_req_failed
+    ✓ 'rate<0.01' rate=0.00%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 1440    139.377452/s
+    checks_succeeded...: 100.00% 1440 out of 1440
+    checks_failed......: 0.00%   0 out of 1440
+
+    ✓ health check status is 200
+    ✓ plan created successfully (201)
+    ✓ plan has valid UUID
+    ✓ plan initial version is 1
+    ✓ location added successfully (201)
+    ✓ location has visit_order >= 1
+    ✓ location initial version is 1
+    ✓ location updated (200) or optimistic lock conflict (409)
+    ✓ location version incremented on 200
+    ✓ plan fetched successfully (200)
+    ✓ plan updated (200) or optimistic lock conflict (409)
+    ✓ plan version incremented on 200
+    ✓ plan deleted successfully (204)
+
+    HTTP
+    http_req_duration..............: avg=9.03ms   min=557.16µs med=3.33ms   max=318.31ms p(90)=10.09ms  p(95)=11.82ms 
+      { expected_response:true }...: avg=9.03ms   min=557.16µs med=3.33ms   max=318.31ms p(90)=10.09ms  p(95)=11.82ms 
+    http_req_failed................: 0.00%  0 out of 720
+    http_reqs......................: 720    69.688726/s
+
+    EXECUTION
+    iteration_duration.............: avg=573.89ms min=524.27ms med=531.59ms max=1.26s    p(90)=548.45ms p(95)=944.93ms
+    iterations.....................: 90     8.711091/s
+    vus............................: 5      min=5        max=5
+    vus_max........................: 5      min=5        max=5
+
+    NETWORK
+    data_received..................: 499 kB 48 kB/s
+    data_sent......................: 219 kB 21 kB/s
+
+
+
+
+running (10.3s), 0/5 VUs, 90 complete and 0 interrupted iterations
+default ✓ [ 100% ] 5 VUs  10s

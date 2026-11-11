@@ -145,7 +145,7 @@ public class LocationsController : ControllerBase
             $"SELECT id FROM travel_plans WHERE id = {existing.TravelPlanId} FOR UPDATE");
 
         await _db.Database.ExecuteSqlInterpolatedAsync(
-            $"DELETE FROM locations WHERE id = {locationGuid} AND version = {expectedVersion}");
+            $"DELETE FROM locations WHERE id = {locationGuid}");
 
         // Re-compact visit_order after deletion so order stays sequential without gaps
         await _db.Database.ExecuteSqlInterpolatedAsync($@"
