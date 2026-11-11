@@ -1,17 +1,113 @@
+name: travel_planner
+
 services:
+  # ===================================================================
+  # Service 1: PostgreSQL Relational Database Server
+  # ===================================================================
   postgres:
     image: postgres:16-alpine
-    container_name: traveler_postgres
+    container_name: travel_planner_db
+    restart: unless-stopped
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgrespassword
-      POSTGRES_DB: traveler_db
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: ${DB_NAME_PROD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
     volumes:
-      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/001_create_tables.sql:ro
+    ports:
+      - "${DB_PORT}:5432"
+    networks:
+      - travel_planner_network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d traveler_db"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME_PROD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp
+      - /var/run/postgresql
+
+  # ===================================================================
+  # Service 2: TravelerAPI ASP.NET Core 8.0 Web API Server
+  # ===================================================================
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: travel_planner_api
+    restart: unless-stopped
+    user: "1000:1000"
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT}
+      ASPNETCORE_URLS: "http://+:5000"
+      ConnectionStrings__DefaultConnection: "Host=${DB_HOST};Port=5432;Database=${DB_NAME_PROD};Username=${DB_USER};Password=${DB_PASSWORD};Maximum Pool Size=${DB_POOL}"
+      Logging__LogLevel__Default: ${LOG_LEVEL}
+    ports:
+      - "${APP_PORT}:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - travel_planner_network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    volumes:
+      - app_logs:/app/logs
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 256M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/tmp
+
+# =====================================================================
+# Named Volumes for Persistent Storage
+# =====================================================================
+volumes:
+  postgres_data:
+    driver: local
+  app_logs:
+    driver: local
+
+# =====================================================================
+# Isolated Bridge Network
+# =====================================================================
+networks:
+  travel_planner_network:
+    driver: bridge

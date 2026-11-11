@@ -1,0 +1,12 @@
+# Development Override Compose File (Best Practice #7)
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+services:
+  web:
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      Logging__LogLevel__Default: Debug
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 1G
