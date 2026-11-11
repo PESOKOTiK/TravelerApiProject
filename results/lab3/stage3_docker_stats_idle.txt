@@ -1,0 +1,4 @@
+CONTAINER ID   NAME                   CPU %     MEM USAGE / LIMIT   MEM %     NET I/O           BLOCK I/O        PIDS
+5294b1ee5f92   travel_planner_api     0.66%     44.81MiB / 512MiB   8.75%     17.2kB / 5.59kB   0B / 0B          16
+9c5fb2487ccf   travel_planner_db      0.02%     23.88MiB / 1GiB     2.33%     20.6kB / 11.9kB   25.9MB / 104MB   6
+324e48c50d32   nodemongo-database-1   0.48%     117MiB / 31.08GiB   0.37%     20.8kB / 126B     94MB / 13.1MB    72

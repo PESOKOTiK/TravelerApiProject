@@ -1,0 +1,3 @@
+NAME                 IMAGE                COMMAND                  SERVICE    CREATED         STATUS                           PORTS
+travel_planner_api   travel_planner-web   "dotnet TravelerApi.…"   web        7 seconds ago   Up 1 second (health: starting)   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+travel_planner_db    postgres:16-alpine   "docker-entrypoint.s…"   postgres   7 seconds ago   Up 7 seconds (healthy)           0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp

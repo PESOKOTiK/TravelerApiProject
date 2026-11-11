@@ -1,0 +1,6 @@
+9c5fb2487ccf   travel_planner_db      4.49%     59.88MiB / 1GiB       5.85%     4.41GB / 4.29GB   26.3MB / 50.9GB   16
+324e48c50d32   nodemongo-database-1   0.54%     135.2MiB / 31.08GiB   0.42%     22.9kB / 126B     94MB / 64MB       72
+CONTAINER ID   NAME                   CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
+5294b1ee5f92   travel_planner_api     2.05%     107.4MiB / 512MiB     20.97%    3.23GB / 4.12GB   0B / 0B           19
+9c5fb2487ccf   travel_planner_db      1.56%     59.4MiB / 1GiB        5.80%     4.41GB / 4.29GB   26.3MB / 50.9GB   16
+324e48c50d32   nodemongo-database-1   0.61%     135.2MiB / 31.08GiB   0.42%     22.9kB / 126B     94MB / 64.1MB     72
